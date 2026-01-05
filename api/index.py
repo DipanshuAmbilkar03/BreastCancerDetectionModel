@@ -36,6 +36,3 @@ def index():
         prediction = "Malignant" if result == 1 else "Benign"
     return render_template("index.html", prediction=prediction)
 
-# Vercel entry point
-def handler(event, context):
-    return app(event, context)
