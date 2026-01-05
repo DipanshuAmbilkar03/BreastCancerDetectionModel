@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header-img">
+        <img src="{{ url_for('static', filename='title.jpeg') }}" alt="Breast Cancer Awareness">
+    </div>
+
+    <h1>Breast Cancer Prediction System</h1>
+    <p class="subtitle">
+        Enter diagnostic measurements below to predict whether the tumor is benign or malignant.
+    </p>
+
+    <div class="card">
+        <form method="POST">
+            <div class="grid">
+                {% for feature in features %}
+                <div class="field">
+                    <label>{{ feature.replace('_', ' ').title() }}</label>
+                    <input type="number" step="any" name="{{ feature }}" placeholder="Enter value" required>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Predict Result</button>
+        </form>
+    </div>
+
+    {% if prediction %}
+    <div id="prediction-section" class="result-wrapper">
+        {% if prediction == "Malignant (Cancerous)" %}
+        <div class="result-card danger">
+            <img src="{{ url_for('static', filename='cancerimgs.jpg') }}" alt="Cancer Detected">
+            <h2>Cancerous (Malignant)</h2>
+            <p>
+                The model has detected patterns commonly associated with malignant breast tissue.
+                This is not a medical diagnosis. Please consult a qualified healthcare professional
+                for further evaluation.
+            </p>
+        </div>
+        {% else %}
+        <div class="result-card success">
+            <img src="{{ url_for('static', filename='okay_img.jpg') }}" alt="Benign Result">
+            <h2>Not Cancerous (Benign)</h2>
+            <p>
+                The model did not detect malignant patterns.
+                Routine medical checkups are still recommended for accurate clinical assessment.
+            </p>
+        </div>
+        {% endif %}
+
+        <div class="final-prediction">
+            <strong>Prediction:</strong> {{ prediction }}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+    <script>
+        document.getElementById("prediction-section")
+            .scrollIntoView({ behavior: "smooth" });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #65e0e0,rgb(13, 66, 66));
+    margin: 0;
+    padding: 0;
+    background-color: #008081;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.header-img img {
+    width: 100%;
+    height: 260px;
+    object-fit: fill;
+    flex: 1;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #34495e;
+    font-size: 14px;
+}
+
+.field input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+}
+
+.field input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+/* Button */
+button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 14px;
+    background-color: #008081;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #015f5f;
+}
+
+/* Result Section */
+.result-wrapper {
+    margin-top: 40px;
+}
+
+.result-card {
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.result-card img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.result-card h2 {
+    margin-bottom: 10px;
+}
+
+.result-card p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Status Colors */
+.result-card.danger {
+    background: #fdecea;
+    border-left: 6px solid #dc3545;
+}
+
+.result-card.danger h2 {
+    color: #dc3545;
+}
+
+.result-card.success {
+    background: #e9f7ef;
+    border-left: 6px solid #28a745;
+}
+
+.result-card.success h2 {
+    color: #28a745;
+}
+
+/* Final Prediction */
+.final-prediction {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
