@@ -38,5 +38,11 @@ def index():
         X_scaled = scaler.transform(X)
         result = model.predict(X_scaled)[0]
         prediction = "Malignant" if result == 1 else "Benign"
-    return render_template("index.html", prediction=prediction)
+    
+    return render_template(
+    "index.html",
+    features=FEATURES,
+    prediction=prediction
+)
+
 
