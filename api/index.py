@@ -5,9 +5,13 @@ import os
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
-# Load model
-model = pickle.load(open("../model/model.pkl", "rb"))
-scaler = pickle.load(open("../model/scaler.pkl", "rb"))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, "..", "model", "model.pkl")
+scaler_path = os.path.join(BASE_DIR, "..", "model", "scaler.pkl")
+
+model = pickle.load(open(model_path, "rb"))
+scaler = pickle.load(open(scaler_path, "rb"))
 
 FEATURES = [
     'radius_mean',
