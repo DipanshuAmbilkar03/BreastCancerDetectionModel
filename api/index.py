@@ -32,17 +32,21 @@ FEATURES = [
 @app.route("/", methods=["GET", "POST"])
 def index():
     prediction = None
+
     if request.method == "POST":
-        values = [float(request.form[f]) for f in FEATURES]
-        X = np.array(values).reshape(1, -1)
-        X_scaled = scaler.transform(X)
-        result = model.predict(X_scaled)[0]
-        prediction = "Malignant" if result == 1 else "Benign"
-    
-    return render_template(
-    "index.html",
-    features=FEATURES,
-    prediction=prediction
-)
+        try:
+            values = [float(request.form[f]) for f in FEATURES]
+            X = np.array(values).reshape(1, -1)
+            X_scaled = scaler.transform(X)
+            result = model.predict(X_scaled)[0]
+            proba = model.predict_proba(X)[0]
+            print("Benign:", proba[0], "Malignant:", proba[1])
+
+            prediction = "Malignant (Cancerous)" if result == 1 else "Benign (Non-Cancerous)"
+
+        except Exception as e:
+            prediction = f"Error: {str(e)}"
+
+    return render_template("index.html", features=FEATURES, prediction=prediction)
 
 
